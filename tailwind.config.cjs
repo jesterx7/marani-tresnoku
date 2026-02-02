@@ -5,7 +5,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        truculenta: ['Truculenta', 'sans-serif'],
+      },
+      keyframes: {
+        swipeUp: {
+          '0%': { transform: 'translateY(8px)', opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'translateY(-8px)', opacity: '0' },
+        },
+      },
+      animation: {
+        swipeUp: 'swipeUp 1.5s ease-in-out infinite',
       },
     },
   },
