@@ -1,36 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useRef, useState } from "react";
+import WeddingContent from "./content/WeddingContent";
+import music from "./assets/musics/music.mp3";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const audioRef = useRef(null);
+  const [opened, setOpened] = useState(false);
+
+  const openInvitation = () => {
+    audioRef.current.volume = 0.4;
+    audioRef.current.play();
+    setOpened(true);
+  };
 
   return (
-    <div className="bg-white">
-      <div className="h-screen flex items-center justify-center">
-        <div className="flex flex-col md:flex-row md:gap-6">
-          <div className="text-7xl lg:text-9xl tracking-wide great-vibes-regular opacity-0 translate-y-4 animate-fadeIn">
-            Marani
-          </div>
-          <div className="text-7xl lg:text-9xl tracking-wide great-vibes-regular opacity-0 translate-y-4 animate-fadeIn">
-            Katresnan
-          </div>
+    <>
+      {!opened && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center bg-[url('/bg-invitation-mobile.jpg')] md:bg-[url('/bg-invitation-desktop.jpg')] justify-center bg-cover bg-center bg-no-repeat text-center">
+          <img
+            src="/logo.png"
+            alt="Wedding Logo"
+            className="mb-2 w-60 md:w-40"
+          />
+          
+          <h1 className="mb-2 text-4xl font-serif tracking-wide">
+            Wedding Invitation
+          </h1>
+
+          <p className="mb-4 italic text-gray-600">
+            You are warmly invited
+          </p>
+
+          <p className="mb-8 font-semibold text-gray-600 font-serif tracking-wide">
+            Dear Mr. Dummy
+          </p>
+
+          <button
+            onClick={openInvitation}
+            className="rounded-full font-semibold bg-[#7a99b7] px-6 py-2 text-white transition hover:opacity-90"
+          >
+            OPEN INVITATION
+          </button>
         </div>
-        <div className="flex flex-col md:flex-row md:gap-6">
-          <div>
-            Marcell
-          </div>
-          <div>
-            X
-          </div>
-          <div>
-            Rani
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+      )}
+
+      <audio ref={audioRef} loop>
+        <source src={music} type="audio/mpeg" />
+      </audio>
+
+      {opened && <WeddingContent />}
+    </>
+  );
 }
 
 export default App
