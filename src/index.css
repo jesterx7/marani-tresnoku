@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: 122 153 183;
+}
+
 .great-vibes-regular {
   font-family: "Great Vibes", cursive;
   font-weight: 400;

@@ -37,7 +37,7 @@ function App() {
 
           <button
             onClick={openInvitation}
-            className="rounded-full font-semibold bg-[#7a99b7] px-6 py-2 text-white transition hover:opacity-90"
+            className="rounded-full font-semibold bg-primary px-6 py-2 text-white transition hover:opacity-90"
           >
             OPEN INVITATION
           </button>

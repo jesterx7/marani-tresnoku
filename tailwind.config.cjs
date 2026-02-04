@@ -4,6 +4,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: 'rgb(var(--primary-color) / <alpha-value>)',
+      },
       fontFamily: {
       },
       keyframes: {
