@@ -1,5 +1,6 @@
 import { useState } from "react";
-import LightBoxContent from "./LightBoxContent";
+import { Gallery, Item } from "react-photoswipe-gallery";
+import "photoswipe/dist/photoswipe.css";
 
 const photos = [
     "/collections/img-1.jpeg",
@@ -59,34 +60,43 @@ function WeddingContent() {
                 </div>
             </div>
             <div className="relative min-h-screen p-6 bg-white">
+                <Gallery>
+                    <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[200px] gap-2">
+                        {photos.map((src, i) => {
+                            const span =
+                                i === 0
+                                    ? "row-span-2"
+                                    : i === 3
+                                        ? "col-span-2"
+                                        : "";
 
-                {/* GRID VIEW */}
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-                    {photos.map((src, i) => (
-                        <img
-                            key={i}
-                            src={src}
-                            alt=""
-                            onClick={() => setActiveIndex(i)}
-                            className="aspect-square object-cover rounded-xl cursor-pointer transition-transform hover:scale-105"
-                        />
-                    ))}
-                </div>
-
-                {/* LIGHTBOX */}
-                {activeIndex !== null && (
-                    <LightBoxContent
-                        photos={photos}
-                        index={activeIndex}
-                        onClose={() => setActiveIndex(null)}
-                        onPrev={() =>
-                            setActiveIndex((activeIndex - 1 + photos.length) % photos.length)
-                        }
-                        onNext={() =>
-                            setActiveIndex((activeIndex + 1) % photos.length)
-                        }
-                    />
-                )}
+                            return (
+                                <Item
+                                    key={i}
+                                    original={src}
+                                    thumbnail={src}
+                                    width="1200"
+                                    height="1800"
+                                >
+                                    {({ ref, open }) => (
+                                        <div
+                                            ref={ref}
+                                            onClick={open}
+                                            className={`relative overflow-hidden cursor-pointer ${span}`}
+                                        >
+                                            <img
+                                                src={src}
+                                                alt=""
+                                                loading="lazy"
+                                                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                                            />
+                                        </div>
+                                    )}
+                                </Item>
+                            );
+                        })}
+                    </div>
+                </Gallery>
             </div>
         </div>
     );
