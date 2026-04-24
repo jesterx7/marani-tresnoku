@@ -43,13 +43,13 @@ function WeddingContent() {
 
     return (
         <div class="flex justify-center bg-gray-200 min-h-screen">
-            <div class="w-[375px] min-h-screen bg-white shadow-lg">
+            <div class="w-[450px] min-h-screen bg-white shadow-lg">
                 <div className="relative h-screen p-8 bg-[linear-gradient(360deg,_#7a99b7_3%,_#FF003F00_40%),url('/img-view-1-mobile.jpeg')] bg-cover bg-center bg-no-repeat text-center border-0">
                     <div className="flex items-center justify-center flex-col">
                         <div className="text-6xl tracking-wide font-serif opacity-0 translate-y-4 animate-fadeIn">
                             Marani
                         </div>
-                        <div className="text-7xl tracking-wide great-vibes-regular opacity-0 translate-y-4 animate-fadeIn">
+                        <div className="text-7xl first-line:tracking-wide great-vibes-regular opacity-0 translate-y-4 animate-fadeIn">
                             Katresnan
                         </div>
                         <div className="flex items-center justify-center gap-3 opacity-0 translate-y-4 animate-fadeIn">
