@@ -8,6 +8,7 @@ module.exports = {
         primary: 'rgb(var(--primary-color) / <alpha-value>)',
       },
       fontFamily: {
+        roboto: ["'Roboto Flex'", "sans-serif"],
       },
       keyframes: {
         swipeUp: {
